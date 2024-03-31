@@ -43,7 +43,7 @@
 
 <script>
 import axios from 'axios';
-
+import { baseURL } from '../../../baseUrl';
 export default {
   data() {
     return {
@@ -67,7 +67,7 @@ export default {
 fetchParcours() {
 
 const token = localStorage.getItem('userToken');
-axios.get(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/parcours`, {
+axios.get(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/parcours`, {
   headers: {
     'Authorization': `Bearer ${token}`,
   },
@@ -82,7 +82,7 @@ axios.get(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-f
 createUE() {
 let formData = { ...this.form };
 
-      const endpoint = `http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/create`;
+      const endpoint = `${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/create`;
       axios.post(endpoint, formData, {
         headers: {  
           'Authorization': `Bearer ${localStorage.getItem('userToken')}`,

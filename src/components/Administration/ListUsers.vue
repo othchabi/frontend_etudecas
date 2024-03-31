@@ -38,7 +38,7 @@
   import Filter from '../~shared/Datagrid/Filter.vue';
   import axios from 'axios'
   import { useRouter } from 'vue-router';
-
+import { baseURL } from '../../baseUrl';
    const router = useRouter();;
 
   
@@ -99,7 +99,7 @@
         const token = localStorage.getItem('userToken');
         console.log(token)
 
-        axios.get('http://localhost:8000/api/users', {
+        axios.get(`${baseURL}/api/users`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -120,7 +120,7 @@
         const token = localStorage.getItem('userToken'); 
           console.log(token, row.id)
 
-        axios.delete(`http://localhost:8000/api/user/delete/${row.id}`, {
+        axios.delete(`${baseURL}/api/user/delete/${row.id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

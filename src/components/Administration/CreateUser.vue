@@ -26,7 +26,7 @@
   
   <script>
   import axios from 'axios';
-  
+  import { baseURL } from '../../baseUrl';
   export default {
     components: {
       // Your components here
@@ -54,7 +54,7 @@
           roles: this.form.roles,
         };
 
-        axios.post('http://localhost:8000/api/user/create', userData, {
+        axios.post(`${baseURL}/api/user/create`, userData, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

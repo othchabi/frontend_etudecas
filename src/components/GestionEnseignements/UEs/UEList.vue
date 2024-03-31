@@ -56,7 +56,7 @@ import axios from 'axios';
 import Datagrid from '../../~shared/Datagrid/Datagrid.vue';
 import Search from '../../~shared/Datagrid/Search.vue';
 import Filter from '../../~shared/Datagrid/Filter.vue';
-
+import { baseURL } from '../../../baseUrl';
 export default {
   components: {
     Datagrid,
@@ -97,7 +97,7 @@ export default {
     fetchNiveau() {
 
       const token = localStorage.getItem('userToken');
-      axios.get(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}`, {
+      axios.get(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -114,7 +114,7 @@ export default {
     fetchUEs() {
 
       const token = localStorage.getItem('userToken');
-      axios.get(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues`, {
+      axios.get(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -143,7 +143,7 @@ export default {
   const confirmDelete = confirm(`Êtes-vous sûr de vouloir supprimer l\'UE : ${row.nom}  ?`);
   if (confirmDelete) {
     const token = localStorage.getItem('userToken');
-    axios.delete(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/delete/${row.id}`, {
+    axios.delete(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/delete/${row.id}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
