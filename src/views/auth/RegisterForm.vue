@@ -53,7 +53,9 @@
 
 <script>
 import axios from 'axios';
-import baseURL from '../../baseUrl'
+import { baseURL } from '../../baseUrl';
+
+
 export default {
   name: 'RegisterForm',
   data() {
