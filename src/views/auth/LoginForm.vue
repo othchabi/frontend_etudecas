@@ -27,7 +27,7 @@
 <script>
 import axios from 'axios';
 import { mapMutations } from 'vuex';
-import { baseURL } from '../../baseUrl';
+
 export default {
   name: 'LoginForm',
   data() {
@@ -48,7 +48,10 @@ export default {
       }
       
       try {
-        const response = await axios.post(`${baseURL}/api/login`, this.account);
+
+
+
+        const response = await axios.post('https://suspicious-chatelet.212-132-110-160.plesk.page/api/login', this.account);
 
         // Check for successful login response (status 201)
         if (response.status === 200) {
