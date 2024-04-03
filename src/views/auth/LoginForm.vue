@@ -51,7 +51,7 @@ export default {
 
 
 
-        const response = await axios.post('https://suspicious-chatelet.212-132-110-160.plesk.page/api/login', this.account);
+        const response = await axios.post('https://dreamy-chebyshev.212-132-110-160.plesk.page/api/login', this.account);
 
         // Check for successful login response (status 201)
         if (response.status === 200) {
