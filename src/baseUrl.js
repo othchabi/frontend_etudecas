@@ -1,1 +1,1 @@
-export const baseURL = 'https://www.dreamy-chebyshev.212-132-110-160.plesk.page';
+export const baseURL = "http://www.etudecasupjv.fr";
