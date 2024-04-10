@@ -51,7 +51,9 @@ export default {
 
 
 
-        const response = await axios.post('https://www.etudecasupjv.fr/api/login', this.account);
+
+        const response = await axios.post('http://localhost:8000/api/login', this.account);
+
 
         // Check for successful login response (status 201)
         if (response.status === 200) {

@@ -30,7 +30,7 @@
 
 <script>
 import axios from 'axios';
-import { baseURL } from '../../../baseUrl';
+
 export default {
   data() {
     return {
@@ -50,7 +50,7 @@ export default {
   
   methods: {
     createGroupe() {
-      axios.post(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/${this.ueId}/groupes/create`, this.form, {
+      axios.post(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/${this.ueId}/groupes/create`, this.form, {
         headers: {  
           'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
         },

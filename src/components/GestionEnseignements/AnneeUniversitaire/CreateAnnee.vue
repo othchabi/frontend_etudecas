@@ -28,7 +28,7 @@
   
   <script>
   import axios from 'axios';
-  import { baseURL } from '../../../baseUrl';
+  
   export default {
     data() {
       return {
@@ -48,7 +48,7 @@
     methods: {
         fetchAnneesUniversitaires() {
         const token = localStorage.getItem('userToken');
-        axios.get(`${baseURL}/api/annee-universitaire`, {
+        axios.get('http://localhost:8000/api/annee-universitaire', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -68,7 +68,7 @@
         console.log(this.form);
         const [annee_debut, annee_fin] = this.form.annee.split('/').map(Number); // Convert to numbers if necessary
 
-        const endpoint = this.form.selectedAnneeId == '' ? `${baseURL}/api/annee-universitaire/create` : `${baseURL}/api/annee-universitaire/copy`
+        const endpoint = this.form.selectedAnneeId == '' ? 'http://localhost:8000/api/annee-universitaire/create' : 'http://localhost:8000/api/annee-universitaire/copy'
         
         axios.post(endpoint, {annee_debut, annee_fin}, {
           headers: {  
