@@ -84,7 +84,7 @@
       },
       fetchInactiveUsers() {
         const token = localStorage.getItem('userToken');
-        axios.get(`${baseURL}/api/inactive-users`, {
+        axios.get('http://localhost:8000/api/inactive-users', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -103,7 +103,7 @@
       },
       activateUser(userId) {
     const token = localStorage.getItem('userToken');
-    axios.post(`${baseURL}/api/user/activate/${userId}`, {}, {
+    axios.post(`http://localhost:8000/api/user/activate/${userId}`, {}, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -119,7 +119,7 @@
   rejectUser(userId) {
     const token = localStorage.getItem('userToken');
     console.log(token);
-    axios.post(`${baseURL}/api/user/delete/${userId}`, {}, {
+    axios.post(`http://localhost:8000/api/user/delete/${userId}`, {}, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

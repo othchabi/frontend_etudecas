@@ -51,7 +51,7 @@
   import Datagrid from '../../~shared/Datagrid/Datagrid.vue';
   import Search from '../../~shared/Datagrid/Search.vue';
   import Filter from '../../~shared/Datagrid/Filter.vue';
-  import { baseURL } from '../../../baseUrl';
+  
   export default {
     components: {
       Datagrid,
@@ -64,7 +64,6 @@
         headers: [
   
           { text: 'Année Universitaire', value: 'annee_universitaire' },
-          { text: 'Date de Création', value: 'created_at' },
 
         ],
         anneeUniversitaire: [], 
@@ -72,14 +71,13 @@
         selectedFilter: '',
         filterOptions: [
          { text: 'Année Universitaire', value: 'annee_universitaire' },
-         { text: 'Date de Création', value: 'created_at' },
         ],
       };
     },
     methods: {
       fetchAnneesUniversitaire() {
         const token = localStorage.getItem('userToken');
-        axios.get(`${baseURL}/api/annee-universitaire`, {
+        axios.get('http://localhost:8000/api/annee-universitaire', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -109,7 +107,7 @@
     const confirmDelete = confirm(`Êtes-vous sûr de vouloir supprimer l'annee universitaire :  ${row.annee_universitaire}?`);
     if (confirmDelete) {
       const token = localStorage.getItem('userToken');
-      axios.delete(`${baseURL}/api/annee-universitaire/delete/${row.id}`, {
+      axios.delete(`http://localhost:8000/api/annee-universitaire/delete/${row.id}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
