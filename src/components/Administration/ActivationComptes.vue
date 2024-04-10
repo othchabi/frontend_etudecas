@@ -34,7 +34,8 @@
     import Search from '../~shared/Datagrid/Search.vue';
     import Filter from '../~shared/Datagrid/Filter.vue';
     import axios from 'axios'; // Make sure axios is imported
-
+    import { baseURL } from '../../baseUrl';
+    
     export default {
       components: {
         Datagrid,
