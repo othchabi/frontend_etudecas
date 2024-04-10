@@ -56,7 +56,7 @@ import axios from 'axios';
 import Datagrid from '../../~shared/Datagrid/Datagrid.vue';
 import Search from '../../~shared/Datagrid/Search.vue';
 import Filter from '../../~shared/Datagrid/Filter.vue';
-import { baseURL } from '../../../baseUrl';
+
 export default {
   components: {
     Datagrid,
@@ -67,6 +67,7 @@ export default {
     return {
       // Définition des en-têtes adaptées aux données reçues de l'API
       headers: [
+      { text: 'Code', value: 'code' },
       { text: 'Code Apogée', value: 'code_apogee' },
       { text: 'Nom', value: 'nom' },
       { text: 'Parcours', value: 'parcours' },
@@ -82,6 +83,7 @@ export default {
       searchQuery: '',
       selectedFilter: '',
       filterOptions: [
+      { text: 'Code', value: 'code' },
       { text: 'Code Apogée', value: 'code_apogee' },
       { text: 'Nom', value: 'nom' },
       { text: 'Parcours', value: 'parcours' },
@@ -97,7 +99,7 @@ export default {
     fetchNiveau() {
 
       const token = localStorage.getItem('userToken');
-      axios.get(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}`, {
+      axios.get(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -114,7 +116,7 @@ export default {
     fetchUEs() {
 
       const token = localStorage.getItem('userToken');
-      axios.get(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues`, {
+      axios.get(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -122,10 +124,11 @@ export default {
       .then(response => {
         console.log(response.data);
         this.ues = response.data.map(ue => ({
-          ...ue,
-          parcours: ue.parcours.map(parcours => parcours.nom).join(',')
+  ...Object.fromEntries(Object.entries(ue).map(([key, value]) => 
+    [key, value === null ? 'N/A' : key === 'parcours' ? value.map(p => p.nom || 'N/A').join(',') : value]
+  ))
+}));
 
-        }));
       })
       .catch(error => console.error('Erreur lors de la récupération des parcours de l\'année', error));
     },
@@ -143,7 +146,7 @@ export default {
   const confirmDelete = confirm(`Êtes-vous sûr de vouloir supprimer l\'UE : ${row.nom}  ?`);
   if (confirmDelete) {
     const token = localStorage.getItem('userToken');
-    axios.delete(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/delete/${row.id}`, {
+    axios.delete(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/delete/${row.id}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },

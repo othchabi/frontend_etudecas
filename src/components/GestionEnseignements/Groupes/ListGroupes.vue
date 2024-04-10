@@ -48,7 +48,7 @@ import axios from 'axios';
 import Datagrid from '../../~shared/Datagrid/Datagrid.vue';
 import Search from '../../~shared/Datagrid/Search.vue';
 import Filter from '../../~shared/Datagrid/Filter.vue';
-import { baseURL } from '../../../baseUrl';
+
 export default {
   components: {
     Datagrid,
@@ -79,7 +79,7 @@ export default {
     fetchUE() {
 
       const token = localStorage.getItem('userToken');
-      axios.get(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/${this.ueId}`, {
+      axios.get(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/${this.ueId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -98,7 +98,7 @@ export default {
 
       console.log(this.anneeId)
       const token = localStorage.getItem('userToken');
-      axios.get(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/${this.ueId}/groupes`, {
+      axios.get(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/${this.ueId}/groupes`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -130,7 +130,7 @@ export default {
   const confirmDelete = confirm(`Êtes-vous sûr de vouloir supprimer le groupe : ${row.niveau}  ?`);
   if (confirmDelete) {
     const token = localStorage.getItem('userToken');
-    axios.delete(`${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/${this.ueId}/groupes/delete/${row.id}`, {
+    axios.delete(`http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/ues/${this.ueId}/groupes/delete/${row.id}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },

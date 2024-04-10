@@ -21,7 +21,7 @@
   </template>
 <script>
 import axios from 'axios';
-import { baseURL } from '../../baseUrl';
+
 export default {
   data() {
     return {
@@ -48,7 +48,7 @@ export default {
       const userId = this.$route.params.userId; // Match the parameter name with your route config
       const token = localStorage.getItem('userToken');
 
-      axios.get(`${baseURL}/api/user/${userId}`, {
+      axios.get(`http://localhost:8000/api/user/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -99,7 +99,7 @@ export default {
         userData
       )
 
-     axios.post(`${baseURL}/api/user/edit/${this.form.id}`, userData, {
+     axios.post(`http://localhost:8000/api/user/edit/${this.form.id}`, userData, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

@@ -35,7 +35,7 @@
 
 <script>
 import axios from 'axios';
-import { baseURL } from '../../../baseUrl';
+
 export default {
   data() {
     return {
@@ -55,7 +55,7 @@ export default {
   methods: {
 
     fetchMaquettes(){
-  const endpoint = `${baseURL}/api/annee-formation/maquettes`;
+  const endpoint = 'http://localhost:8000/api/annee-formation/maquettes';
   axios.get(endpoint, {
     params: { niveau: this.form.niveau }, // Include `niveau` as a query parameter
     headers: {  
@@ -87,7 +87,7 @@ if (formData.date_debut === "") {
 }
 
 console.log(formData)
-      const endpoint =   this.form.base === '' ? `${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/create` : `${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/copy/${formData.base}`
+      const endpoint =   this.form.base === '' ? `http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/create` : `http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/copy/${formData.base}`
       axios.post(endpoint, formData, {
         headers: {  
           'Authorization': `Bearer ${localStorage.getItem('userToken')}`,

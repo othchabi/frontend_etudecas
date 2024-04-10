@@ -1,1 +1,2 @@
-export const baseURL = "https://www.etudecasupjv.fr";
+
+export const baseURL = 'https://localhost:8000';

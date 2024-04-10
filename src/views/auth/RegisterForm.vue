@@ -53,8 +53,6 @@
 
 <script>
 import axios from 'axios';
-import { baseURL } from '../../baseUrl';
-
 
 export default {
   name: 'RegisterForm',
@@ -80,7 +78,7 @@ export default {
       }
       
       try {
-        const response = await axios.post(`${baseURL}/api/register`, this.account);
+        const response = await axios.post('http://localhost:8000/api/register', this.account);
         console.log(response.data);
 
         if (response.status === 200) {

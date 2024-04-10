@@ -19,7 +19,7 @@
 
 <script>
 import axios from 'axios';
-import { baseURL } from '../../../baseUrl';
+
 export default {
   data() {
     return {
@@ -37,7 +37,7 @@ export default {
 createParcours() {
 let formData = { ...this.form };
 
-      const endpoint = `${baseURL}/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/parcours/create`;
+      const endpoint = `http://localhost:8000/api/annee-universitaire/${this.anneeId}/annee-formation/${this.niveauId}/parcours/create`;
       axios.post(endpoint, formData, {
         headers: {  
           'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
